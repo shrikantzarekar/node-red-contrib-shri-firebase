@@ -1,0 +1,43 @@
+{
+  "name": "node-red-contrib-shri-firebase",
+  "version": "0.0.3",
+  "description": "Node-Red module for interacting with google firebase",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shrikantzarekar/node-red-contrib-shri-firebase.git"
+  },
+  "keywords": [
+    "node-red",
+    "google-firebase"
+  ],
+  "contributors": [
+    {
+      "name": "Shrikant Zarekar",
+      "email": "shrikant.zarekar@gmail.com"
+    }
+  ],
+  "node-red": {
+    "nodes": {
+      "google_firebase_once": "google-firebase/firebase_once.js",
+      "google_firebase_config": "google-firebase/firebase_config.js",
+      "google_firebase_on": "google-firebase/firebase_on.js",
+      "google_firebase_push": "google-firebase/firebase_push.js",
+      "google_firebase_update": "google-firebase/firebase_update.js",
+    }
+  },
+  "author": "Shrikant Zarekar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shrikantzarekar/node-red-contrib-shri-firebase/issues"
+  },
+  "homepage": "https://github.com/shrikantzarekar/node-red-contrib-shri-firebase#readme",
+  "dependencies": {
+    "firebase": "^3.3.4",
+    "follow-redirects": "^0.2.0",
+    "lodash-node": "^3.10.2",
+    "moment": "^2.15.1"
+  }
+}

@@ -1,0 +1,129 @@
+<script type="text/x-red" data-template-name="google.firebase.push">
+
+    <div class="form-row">
+        <label for="node-input-firebaseConfig"><i class="fa fa-database"></i> Firebase Config</label>
+        <input type="text" id="node-input-firebaseConfig">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-childpath"><i class="fa fa-sitemap"></i> Child Path</label>
+        <input class="input-append-left" type="text" id="node-input-childpath" placeholder="path-to/the/data">
+    </div>
+    
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="google.firebase.push"></script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('google.firebase.push',{
+        category: 'google_firebase',
+        defaults: {
+            name: {value:''},
+            firebaseConfig:  {type:'google-firebase-config',required:true},
+            childpath: {value: '', required: false}
+        },
+        color: '#ffb37a',
+        inputs:1,
+        outputs:1,
+        icon: 'firebase.png',
+        paletteLabel: "firebase.push()",
+        label: function() {
+           var config = RED.nodes.node(this.firebaseConfig);
+           var childpath = (this.childpath.indexOf("/") == 0) ? this.childpath : "/" + this.childpath;
+           childpath = childpath.substr(-1) == "/" ? childpath.slice(0,-1) : childpath
+           return this.name ||
+                  (config ? "https://"+config.firebaseurl+".firebaseio.com"+(childpath||"") + ".push(\""+this.eventType+"\")" : childpath + ".push(\""+this.eventType+"\")") ||
+                  "firebase.push(\""+this.eventType+"\")";
+        },
+        labelStyle: function() {
+            return this.name?'node_label_italic':'';
+        },
+
+        oneditprepare: function() {
+
+          //Set up autocomplete for Childpath field
+          var defaultChildpathValues = [
+            "msg.childpath",
+          ];
+
+          $('#node-input-childpath').autocomplete({
+            source: defaultChildpathValues,
+            minLength: 0
+          });
+
+            var illegalCombinationShown = false;
+
+            function checkSelectsValid(){
+              return checkSelectsNotIllegal() && checkSelectsNotEmpty();
+            }
+
+            function checkSelectsNotEmpty(){
+              var valid = true;
+              $('#node-input-query-container select').each(function(idx){
+                if ($(this).val() == null || $(this).val() == ""){
+                  valid = false;
+                  return;
+                }
+              });
+              return valid;
+            }
+
+            function checkSelectsNotIllegal(){
+              return ($('#node-input-query-illegal-combination-container > p').length > 1 ? false : true)
+            }
+
+            function checkInputsNotEmpty(){
+              var valid = true;
+              $('#node-input-query-container input').each(function(idx){
+                if ($(this).is(':visible') && $(this).val().length == 0){
+                  valid = false;
+                  return; //breaks jquery .each loop
+                }
+              })
+              return valid;
+            }
+
+            $("#node-input-add-query").click(function() {
+              var queries = $('#node-input-query-container').children();
+              if (queries.length < operators.length) generatequery();
+              //generatequery($("#node-input-query-container").children().length+1,{t:"",v:"",v2:""});
+              $("#node-input-query-container-div").scrollTop($("#node-input-query-container-div").get(0).scrollHeight);
+            });
+
+            if(this.queries){
+              for (i in this.queries){
+              //for (i = 0; i < this.queries.length; i++){ //TODO: For some reason this doesn't work
+                generatequery(this.queries[i]);
+              }
+            }
+
+            function switchDialogResize() {
+                var rows = $("#dialog-form>div:not(.node-input-query-container-row)");
+                var height = $("#dialog-form").height();
+                for (var i=0;i<rows.size();i++) {
+                    height -= $(rows[i]).outerHeight(true);
+                }
+                var editorRow = $("#dialog-form>div.node-input-query-container-row");
+                height -= (parseInt(editorRow.css("marginTop"))+parseInt(editorRow.css("marginBottom")));
+                $("#node-input-query-container-div").css("height",height+"px");
+            };
+
+            $( "#dialog" ).on("dialogresize", switchDialogResize);
+            $( "#dialog" ).one("dialogopen", function(ev) {
+                var size = $( "#dialog" ).dialog('option','sizeCache-switch');
+                if (size) {
+                    $("#dialog").dialog('option','width',size.width);
+                    $("#dialog").dialog('option','height',size.height);
+                    switchDialogResize();
+                }
+            });
+            $( "#dialog" ).one("dialogclose", function(ev,ui) {
+                $( "#dialog" ).off("dialogresize",switchDialogResize);
+            });
+        }
+    });
+</script>
