@@ -25,7 +25,7 @@
       "google_firebase_config": "google-firebase/firebase_config.js",
       "google_firebase_on": "google-firebase/firebase_on.js",
       "google_firebase_push": "google-firebase/firebase_push.js",
-      "google_firebase_update": "google-firebase/firebase_update.js",
+      "google_firebase_update": "google-firebase/firebase_update.js"
     }
   },
   "author": "Shrikant Zarekar",
