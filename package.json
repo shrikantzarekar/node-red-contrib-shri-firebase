@@ -1,7 +1,7 @@
 {
   "name": "node-red-contrib-shri-firebase",
   "version": "0.0.3",
-  "description": "Node-Red module for interacting with google firebase",
+  "description": "Node-Red module for interacting with shri firebase",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,7 +11,7 @@
   },
   "keywords": [
     "node-red",
-    "google-firebase"
+    "shri-firebase"
   ],
   "contributors": [
     {
@@ -21,11 +21,11 @@
   ],
   "node-red": {
     "nodes": {
-      "google_firebase_once": "google-firebase/firebase_once.js",
-      "google_firebase_config": "google-firebase/firebase_config.js",
-      "google_firebase_on": "google-firebase/firebase_on.js",
-      "google_firebase_push": "google-firebase/firebase_push.js",
-      "google_firebase_update": "google-firebase/firebase_update.js"
+      "shri_firebase_once": "shri-firebase/firebase_once.js",
+      "shri_firebase_config": "shri-firebase/firebase_config.js",
+      "shri_firebase_on": "shri-firebase/firebase_on.js",
+      "shri_firebase_push": "shri-firebase/firebase_push.js",
+      "shri_firebase_update": "shri-firebase/firebase_update.js"
     }
   },
   "author": "Shrikant Zarekar",

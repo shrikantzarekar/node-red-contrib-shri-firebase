@@ -1,4 +1,4 @@
-<script type="text/x-red" data-template-name="google.firebase.on">
+<script type="text/x-red" data-template-name="shri.firebase.on">
 
     <div class="form-row">
         <label for="node-input-firebaseConfig"><i class="fa fa-database"></i> Firebase Config</label>
@@ -30,14 +30,14 @@
     </div>
 </script>
 
-<script type="text/x-red" data-help-name="google.firebase.on"></script>
+<script type="text/x-red" data-help-name="shri.firebase.on"></script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('google.firebase.on',{
-        category: 'google_firebase',
+    RED.nodes.registerType('shri.firebase.on',{
+        category: 'shri_firebase',
         defaults: {
             name: {value:''},
-            firebaseConfig:  {type:'google-firebase-config',required:true},
+            firebaseConfig:  {type:'shri-firebase-config',required:true},
             childpath: {value: '', required: false},
             eventType: {value: "value", required: true},
         },

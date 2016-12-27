@@ -1,4 +1,4 @@
-<script type="text/x-red" data-template-name="google.firebase.push">
+<script type="text/x-red" data-template-name="shri.firebase.push">
 
     <div class="form-row">
         <label for="node-input-firebaseConfig"><i class="fa fa-database"></i> Firebase Config</label>
@@ -16,14 +16,14 @@
     </div>
 </script>
 
-<script type="text/x-red" data-help-name="google.firebase.push"></script>
+<script type="text/x-red" data-help-name="shri.firebase.push"></script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('google.firebase.push',{
-        category: 'google_firebase',
+    RED.nodes.registerType('shri.firebase.push',{
+        category: 'shri_firebase',
         defaults: {
             name: {value:''},
-            firebaseConfig:  {type:'google-firebase-config',required:true},
+            firebaseConfig:  {type:'shri-firebase-config',required:true},
             childpath: {value: '', required: false}
         },
         color: '#ffb37a',

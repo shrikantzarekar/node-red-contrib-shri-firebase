@@ -26,5 +26,5 @@ module.exports = function (RED) {
       }
     });
   }
-  RED.nodes.registerType('google.firebase.push', FirebasePush);
+  RED.nodes.registerType('shri.firebase.push', FirebasePush);
 };

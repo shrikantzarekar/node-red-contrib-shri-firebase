@@ -26,5 +26,5 @@ module.exports = function (RED) {
       }
     });
   }
-  RED.nodes.registerType('google.firebase.update', FirebaseUpdate);
+  RED.nodes.registerType('shri.firebase.update', FirebaseUpdate);
 };

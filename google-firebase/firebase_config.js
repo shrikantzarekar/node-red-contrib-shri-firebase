@@ -55,10 +55,11 @@ module.exports = function (RED) {
       };
       
       //Shrikant
+      /*
       this.auth = firebase.auth();
       this.auth.onAuthStateChanged(this.onAuthStateChanged.bind(this));
       this.auth.signInWithEmailAndPassword(this.email,this.password);
-      
+      */
 
       this.fbConfig = connectionPool.get(config, this.id);
     } else {
@@ -66,7 +67,7 @@ module.exports = function (RED) {
     }
   }
 
-  RED.nodes.registerType("google-firebase-config", RemoteServerNode);
+  RED.nodes.registerType("shri-firebase-config", RemoteServerNode);
 };
 
 

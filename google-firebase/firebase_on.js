@@ -35,5 +35,5 @@ module.exports = function (RED) {
       "child_moved": true
     };
   }
-  RED.nodes.registerType('google.firebase.on', FirebaseOn);
+  RED.nodes.registerType('shri.firebase.on', FirebaseOn);
 };
