@@ -26,7 +26,7 @@
       "shri_firebase_on": "shri-firebase/firebase_on.js",
       "shri_firebase_push": "shri-firebase/firebase_push.js",
       "shri_firebase_update": "shri-firebase/firebase_update.js",
-      "shri_firebase_once": "shri-firebase/firebase_getit.js"
+      "shri_firebase_getit": "shri-firebase/firebase_getit.js"
     }
   },
   "author": "Shrikant Zarekar",
