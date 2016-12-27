@@ -19,15 +19,15 @@ module.exports = function (RED) {
 
     this.status({ fill: "green", shape: "ring", text: "Connected" });
     this.on('input', function (msg) {
-      if (this.firebaseConfig.fbConfig.fbApp) {
+    if (this.firebaseConfig.fbConfig.fbApp) {
       firebase.database().ref(this.childpath).once(this.eventType.toString()).then(function (snapshot) {
         var msg = {};
         msg.payload = snapshot.val();
         node.send(msg);
-        node.status({ fill: "green", shape: "ring", text: "Received Data(Get) at " + Utils.getTime() });
-      }
-    });
+        node.status({ fill: "green", shape: "ring", text: "Received Data(Once) at " + Utils.getTime() });
+      });
     }
+    });
 
     this.validEventTypes = {
       "value": true,
