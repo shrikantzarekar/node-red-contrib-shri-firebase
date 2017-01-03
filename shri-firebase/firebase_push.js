@@ -20,7 +20,7 @@ module.exports = function (RED) {
     this.status({ fill: "green", shape: "ring", text: "Connected" });
     this.on('input', function (msg) {
       if (this.firebaseConfig.fbConfig.fbApp) {
-        firebase.database().ref(this.childpath).push(msg.payload);
+        msg.key = firebase.database().ref(this.childpath).push(msg.payload).key;
         node.status({ fill: "green", shape: "ring", text: "Pushed Data at " + Utils.getTime() });
         node.send(msg);
       }
